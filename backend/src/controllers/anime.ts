@@ -5,7 +5,7 @@ import { AppError, isAppError } from "../utils/errors";
 import { validators } from "../utils/validation";
 
 // Add anime validation schema
-const addAnimeSchema = {
+export const addAnimeSchema = {
   name: validators.isString,
   vote_average: validators.isValidRating,
   image_url: validators.isString,

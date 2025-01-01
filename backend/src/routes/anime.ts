@@ -4,6 +4,7 @@ import {
   deleteAnime,
   getAnimeList,
   updateAnime,
+  addAnimeSchema,
 } from "../controllers/anime";
 import { authMiddleware } from "../middleware/auth";
 import { validateBody } from "../utils/validation";

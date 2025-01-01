@@ -2,12 +2,15 @@ import { Context, Next } from "hono";
 import { AppError } from "./errors";
 
 export const validateBody = <T>(schema: {
-  [K in keyof T]: (value: any) => boolean;
+  [K in keyof T]: (value: unknown) => boolean;
 }) => {
   return async (c: Context, next: Next) => {
     const body = await c.req.json();
 
-    for (const [key, validator] of Object.entries(schema)) {
+    for (const [key, validator] of Object.entries(schema) as [
+      string,
+      (value: unknown) => boolean
+    ][]) {
       if (!validator(body[key])) {
         throw new AppError(`Invalid ${key}`, 400);
       }
