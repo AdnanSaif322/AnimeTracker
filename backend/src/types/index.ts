@@ -8,11 +8,20 @@ export interface User {
 
 export interface AnimeItem {
   id: string;
-  title: string;
-  description: string;
+  name: string;
+  vote_average: number | null;
   image_url: string;
-  status: "watching" | "completed" | "plan_to_watch" | "dropped";
-  user_id: string;
   created_at: string;
-  updated_at: string;
+}
+
+export interface UserAnime {
+  user_id: string;
+  anime_id: string;
+  status: "watching" | "completed" | "plan_to_watch" | "dropped";
+}
+
+export interface CreateAnimeDTO {
+  name: string;
+  vote_average: number | null;
+  image_url: string;
 }
